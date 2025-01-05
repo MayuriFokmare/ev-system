@@ -431,10 +431,6 @@ def get_reservations_with_charging_info(owner_id):
         # Log error and respond with a 500 Internal Server Error
         sql_op.logger.error(f"Error in get_reservations_with_charging_info API: {str(e)}")
         return jsonify({"status": "error", "message": "Internal Server Error"}), 500
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
   
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000,debug=True)
