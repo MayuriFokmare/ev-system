@@ -433,4 +433,4 @@ def get_reservations_with_charging_info(owner_id):
         return jsonify({"status": "error", "message": "Internal Server Error"}), 500
   
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000,debug=True)
+    app.run(host='0.0.0.0', port=500=True)
