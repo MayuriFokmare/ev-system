@@ -1,3 +1,6 @@
+##  Application Demo
+Watch the demo video here:  https://drive.google.com/file/d/1QyVGzUTHqJXm9qLADu-6mXxrU3BmKXnS/view?usp=drive_link
+
 # Charging Slot Management API
  
 This project provides an API for managing charging slots for Electric Vehicles (EVs). It allows energy providers and EV owners to interact with charging stations, manage reservations, and process payments via Stripe.
