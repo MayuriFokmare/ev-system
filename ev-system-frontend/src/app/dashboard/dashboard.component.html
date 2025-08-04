@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Charging Management Dashboard</title>
+</head>
+<!-- Header Section -->
+<header class="header">
+    <div class="nav-container">
+      <nav>
+        <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a> 
+        <a routerLink="/register" routerLinkActive="active" class="nav-link">Register</a> 
+        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a> 
+      </nav> 
+    </div>
+    <div class="icons">
+      <!-- <div class="notification">
+       <span class="badge">3</span>
+         Notifications List (Initially Hidden)
+        <div class="notification-dropdown">
+          <ul>
+            <li>New Reservation Alert for Slot #X</li>
+            <li>Payment Confirmation for Reservation ID #Y</li>
+          </ul>
+        </div>
+      </div> -->
+      <div class="user-profile">
+        <div *ngIf="userData" class="user-info">
+          <span class="inline-item">{{ userData.first_name }}</span>
+          <span class="inline-item">{{ userData.last_name }} |</span>
+          <span class="inline-item">{{ userData.role }}</span>
+        </div>
+        <a href="#" (click)="logoutAndRedirect()" class="logout-btn">Logout</a>
+      </div>      
+    </div>
+  </header>
+<body>
+    <main class="main-content">        
+        <section class="energy-providers">
+            <!-- Details and Graph Section -->
+            <div class="details-graph-container">
+                <!-- Details Container -->
+                <div class="details-container">
+                  <div class="details">
+                    <div *ngFor="let station of summaryData">
+                      
+                      <div class="detail-item">
+                        <p class="number">{{ station.total_slots }}</p>
+                        <p class="title">Total Charging Slots</p>
+                      </div>
+                      
+                      <div class="detail-item">
+                        <p class="number">{{ station.active_reservations }}</p>
+                        <p class="title">Active Reservations</p>
+                      </div>
+                      
+                      <div class="detail-item">
+                        <p class="number">
+                          <span class="availability">{{ station.available_slots }}</span>
+                        </p>
+                        <p class="title">Slot Availability</p>
+                      </div>
+                      
+                      <div class="detail-item">
+                        <p class="number">{{ station.total_payment_today }}</p>
+                        <p class="title">Revenue (Daily)</p>
+                      </div>
+                      
+                      <div class="detail-item">
+                        <p class="number">{{ station.total_payment_month }}</p>
+                        <p class="title">Revenue (Monthly)</p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                                
+                <!-- Graph Container -->
+                <div class="graph-container">
+                  <h3>Revenue and Reservation Trends</h3>
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+            <div class="management">
+                <button (click)="navigateToStations()">Manage Charging Points</button>
+            </div>
+            <!-- <iframe src="https://ap-south-1.quicksight.aws.amazon.com/sn/embed/share/accounts/713329953885/dashboards/639f04c0-c4a2-4a9f-9e75-40d8429447ae/sheets/639f04c0-c4a2-4a9f-9e75-40d8429447ae_7516e7dc-1d84-4478-8fdd-3ec8c47d4863/visuals/639f04c0-c4a2-4a9f-9e75-40d8429447ae_ed8e2dc8-21ef-4186-b94e-4a8730a73a42?directory_alias=nilmay"></iframe>    Main Content Section -->
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <table border="1" cellspacing="0" cellpadding="10">
+                    <thead>
+                        <tr>
+                            <th>Reservation ID</th>
+                            <th>EV Owner</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let reservation of recentReservationData">
+                        <td>{{ reservation.reservation_id }}</td>
+                        <td>{{ reservation.first_name }}</td>
+                        <td>{{ reservation.start_time | date:'yyyy-MM-dd hh:mm a' }}</td>
+                        <td>{{ reservation.status }}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            
+           
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p><a href="#">Help</a> | <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a></p>
+
+        <p>2024 EV Charging Management System</p>
+    </footer>
+
+    <!-- Chart.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [1000, 2000, 3000, 4000, 5000, 6000],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                },{
+                    label: 'Reservations',
+                    data: [5, 10, 15, 20, 25, 30],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                }]
+            }
+        });
+    </script>
+
+</body>
+</html>

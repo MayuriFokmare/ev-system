@@ -1,0 +1,77 @@
+<main class="main-content">
+  <header class="header">
+    <h2>Manage Slots</h2>
+  </header>
+
+  
+  <!-- Data Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Station ID</th>
+        <th>Slot Number</th>
+        <th>Slot Type</th>
+        <th>Availability</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let slot of slots">
+        <td>{{ slot.station_id }}</td>
+        <td>{{ slot.slot_number }}</td>
+        <td>
+          <select *ngIf="slot.isEditable" [(ngModel)]="slot.slot_type">
+            <option value="Fast">Fast</option>
+            <option value="Slow">Slow</option>
+          </select>
+          <span *ngIf="!slot.isEditable">{{ slot.slot_type }}</span>
+        </td>
+        <td>
+          <select *ngIf="slot.isEditable" [(ngModel)]="slot.availability">
+            <option [value]="1">Available</option>
+            <option [value]="0">Not Available</option>
+          </select>
+          <span *ngIf="!slot.isEditable">{{ slot.availability === 1 ? 'Available' : 'Not Available' }}</span>
+        </td>        
+        <td>
+            <input *ngIf="slot.isEditable" type="number" [(ngModel)]="slot.price" />
+            <span *ngIf="!slot.isEditable">{{ slot.price |  number:'1.2-2'}}</span>
+        </td>
+        <td>
+           <button *ngIf="!slot.isEditable" (click)="editRow(slot)">Edit</button>
+          <button *ngIf="slot.isEditable" (click)="saveSlot(slot)">Save</button>
+          <button *ngIf="!slot.isEditable" (click)="deleteChargingSlot(slot.station_id, slot.slot_number)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button-container">
+    <button (click)="addEditableRow()">Add New Slot</button>
+    <button (click)="dashboard()">Back To Dashboard</button>
+  </div>
+ <!-- Slots Overview Section -->
+ <h2>Slot Overview</h2>
+ <div class="slot-overview-container">
+   <div class="slot-card total">
+     <div class="icon">🅿️</div>
+     <h3>Total Slots</h3>
+     <p>{{ totalSlots }}</p>
+   </div>
+
+   <div class="slot-card available">
+     <div class="icon">✔️</div>
+     <h3>Available Slots</h3>
+     <p>{{ availableSlots }}</p>
+   </div>
+
+   <div class="slot-card fast">
+     <div class="icon">⚡</div>
+     <h3>Fast Slots</h3>
+     <p>{{ fastSlots }}</p>
+   </div>
+ </div>
+
+  
+</main>

@@ -1,0 +1,55 @@
+<div class="container">
+  <!-- Search Box -->
+  <div class="search-box">
+    <h2>Find Charging Stations</h2>
+    <input
+      type="text"
+      [(ngModel)]="postalCode"
+      placeholder="Enter Postal Code"
+      class="postal-code-input"
+    />
+    <button (click)="fetchStations()" class="search-button">Find</button>
+  </div>
+
+  <div class="map-and-stations">
+    <!-- Google Map -->
+    <div #map class="map-container"></div>
+
+    <div *ngIf="uniqueStations.length > 0" class="stations-list">
+      <ul>
+        <li *ngFor="let station of uniqueStations">
+          <!-- Station Name -->
+          <div (click)="toggleStationDetails(station.station_id)">
+            <strong>{{ station.station_name }}</strong>
+          </div>
+    
+          <!-- Station Details Table -->
+          <div *ngIf="expandedStationId === station.station_id" class="station-details">
+<br>            <table>
+              <thead>
+                <tr>
+                  <th>Slot Type</th>
+                  <th>Price</th>
+                  <th>Availability</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let slot of getStationSlots(station.station_id)">
+                  <td>{{ slot.slot_type }}</td>
+                  <td>{{ slot.price }}</td>
+                  <td>{{ slot.availability > 0 ? 'Available' : 'Unavailable' }}</td>
+                  <td>
+                    <button [disabled]="slot.availability === 0" (click)="bookSlot(slot)">
+                      {{ slot.availability > 0 ? 'Book Slot' : 'Unavailable' }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

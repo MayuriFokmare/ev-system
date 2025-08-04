@@ -1,0 +1,194 @@
+/* General Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1700px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Box */
+.search-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.postal-code-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+/* Map and Stations Section */
+.map-and-stations {
+  display: flex;
+  gap: 20px;
+}
+
+/* Google Map */
+.map-container {
+  flex: 1;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Stations List */
+.stations-list {
+  flex: 1;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stations-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stations-list li {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stations-list li strong {
+  font-size: 18px;
+  cursor: pointer;
+  color: #4CAF50;
+}
+
+/* Station Details Table */
+.station-details {
+  margin-top: 10px;
+}
+
+.station-details h4 {
+  margin: 10px 0;
+  color: #555;
+}
+
+.station-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.station-details th, .station-details td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.station-details th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.station-details td button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.station-details td button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.station-details td button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .map-and-stations {
+    flex-direction: column;
+  }
+
+  .map-container, .stations-list {
+    width: 100%;
+  }
+}
+
+.alert {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.alert.error {
+  background-color: red;
+  color: white;
+}
+
+.alert.success {
+  background-color: green;
+  color: white;
+}
+
+.alert.info {
+  background-color: blue;
+  color: white;
+}
+
+ngx-datatable.material {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+}
+
+ngx-datatable-column {
+  text-align: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+button[disabled] {
+  background-color: #cccccc;
+}

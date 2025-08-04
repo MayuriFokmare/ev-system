@@ -1,0 +1,102 @@
+/* registration.component.css */
+.registration-container {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .registration-form {
+    max-width: 600px; /* Increased width of form to accommodate larger inputs */
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centers the form horizontally */
+    display: flex; /* Ensure it can work with justify-content */
+    flex-direction: column;
+  }
+  
+  
+  .registration-form input,
+  .registration-form select,
+  .registration-form textarea {
+    width: 100%;
+    padding: 12px; /* Increased padding for better size */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px; /* Increased font size for better readability */
+  }
+  
+  .registration-form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  /* Flexbox for First Name and Last Name */
+  .flex-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .flex-row input {
+    width: 48%; /* Adjusted to ensure fields are side by side */
+  }
+  
+  .flex-row input:first-child,
+  .flex-row input:last-child {
+    width: 48%; /* Increased the width for both fields */
+    padding: 12px; /* Increased padding to make input box larger */
+  }
+  
+  /* Flexbox for Postcode and Address */
+  .flex-row-address {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .flex-row-address input,
+  .flex-row-address textarea {
+    width: 48%; /* Increased width for Postcode and Address */
+    padding: 12px; /* Increased padding to make the input box larger */
+  }
+  
+  .flex-row-address input:first-child,
+  .flex-row-address input:last-child,
+  .flex-row-address textarea:last-child {
+    width: 48%; /* Increase the width of Postcode and Address fields */
+    padding: 12px; /* Increased padding to make input box larger */
+  }
+  
+  .registration-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .registration-button:hover {
+    background-color: #45a049;
+  }
+  
+  p {
+    margin-top: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #4CAF50;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Owner Dashboard</title>
+</head>
+<!-- Header Section -->
+<header class="header">
+    <div class="nav-container">
+      <nav>
+        <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a> 
+        <a routerLink="/register" routerLinkActive="active" class="nav-link">Register</a> 
+        <a routerLink="/ev-owner-dashboard" routerLinkActive="active" class="nav-link">ev-owner-dashboard</a>
+      </nav> 
+    </div>
+    <div class="icons">
+      <div class="notification">
+        🔔 <span class="badge">3</span>
+        <!-- Notifications List (Initially Hidden) -->
+        <div class="notification-dropdown">
+          <!-- <ul>
+            <li>New Reservation Alert for Slot #X</li>
+            <li>Payment Confirmation for Reservation ID #Y</li>
+          </ul> -->
+        </div>
+      </div>
+      <div class="user-profile">
+        <div *ngIf="userData" class="user-info">
+          <span class="inline-item">{{ userData.first_name }}</span>
+          <span class="inline-item">{{ userData.last_name }} |</span>
+          <span class="inline-item">{{ userData.role }}</span>
+        </div>
+        <a href="#" (click)="logoutAndRedirect()" class="logout-btn">Logout</a>
+      </div>      
+    </div>
+  </header>
+<body>
+    <div class="container">
+        <!-- Row Layout for the sections -->
+        <div class="row">
+          <!-- Recent Activity Section -->
+          <section class="column recent-activity">
+            <h2>Recent Booking</h2>
+            <ul *ngFor="let reservation of booking">
+              <li>Reservation Id: {{ reservation.reservation_id }}</li>
+              <li>start time : {{ reservation.start_time }}</li>
+              <li>Status: {{ reservation.status }}</li>
+          </ul>
+          <div class="management">
+            <button (click)="navigateToSlots()">Book Slot</button>
+        </div>
+        </section>
+
+
+
+            <!-- Chart Section -->
+            <section class="column chart-section">
+                <!-- Graph Container -->
+                <div>
+                  <h2>Energy Consumption by Charging Time</h2>
+                  <div>
+                    <canvas id="energyChart"></canvas>
+                  </div>                  
+                </div>
+                
+            </section>
+        </div>
+
+        <div class="recent-activity">
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Time</th>
+                <th>Station Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let history of historyData">
+            <td>{{ history.reservation_id }}</td>
+            <td>{{ history.start_time | date:'yyyy-MM-dd hh:mm a'}}</td>
+            <td>{{ history.station_name }}</td>
+            <td>{{ history.status }}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<!-- payment-success.component.html -->
+<div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h1>Payment Successful!</h1>
+      <p>Payment successful! Thank you for booking your slot with us!.</p>
+      <button (click)="redirectToDashboard()">OK</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,30 @@
+<div class="registration-container">
+    <img src="assets/image/car-image.jpg" alt="Registration Image" class="registration-image" />
+    <h2>Registration</h2>
+    <form class="registration-form">
+      <div class="flex-row">
+        <input id="first-name" type="text" placeholder="First Name" required />
+        <input id="last-name" type="text" placeholder="Last Name" required />
+      </div>
+      <input id="email" type="email" placeholder="Email" required />
+      <input id="password" type="password" placeholder="Password" required />
+      <input id="mobile-number" type="text" placeholder="Mobile Number" required />
+      <div class="flex-row-address">
+        <input id="postcode" type="text" placeholder="Postcode" required />
+        <textarea id="address" placeholder="Address" required></textarea>
+      </div>
+      <select id="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="user">EV Owner</option>
+        <option value="admin">Energy Provider</option>
+      </select>
+      <button type="button" (click)="register()" class="registration-button">Register</button>
+    </form>
+    <p>
+      Already have an account? <a routerLink="/login">Login Here</a>
+    </p>
+    <footer class="footer-container">
+      <p>2024 Electric Vehicle Charging Management System.</p>
+    </footer>
+  </div>
+  
