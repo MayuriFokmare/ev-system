@@ -3,7 +3,6 @@ from mysql.connector import pooling
 
 class SqlOperations:
     def __init__(self, db_config, logger):
-        # Ensure db_config is a dictionary
         if not isinstance(db_config, dict):
             raise TypeError("db_config should be a dictionary")
         
@@ -12,7 +11,7 @@ class SqlOperations:
         self.pool = pooling.MySQLConnectionPool(
             pool_name="mypool",
             pool_size=10,
-            **self.db_config  # Ensure db_config is passed as keyword arguments
+            **self.db_config  # db_config is passed as keyword arguments
         )
 
     def _get_connection(self):
@@ -207,7 +206,7 @@ class SqlOperations:
             cursor.execute(query, (availability, slot_number, station_id))
             connection.commit()
 
-            # Confirm successful update by checking affected rows
+            # successful update by checking affected rows
             if cursor.rowcount > 0:
                 return True
             else:
@@ -446,5 +445,6 @@ class SqlOperations:
                 connection.close()
 
     
+
 
     
